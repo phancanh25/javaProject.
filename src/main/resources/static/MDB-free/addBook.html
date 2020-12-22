@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/select.css">
+  <link rel="stylesheet" href="css/uploadFile.css">
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+
+
+</head>
+<body>
+
+	<!-- Material form login -->
+	<div class="card">
+
+	  <h5 class="card-header info-color white-text text-center py-4">
+	    <strong>Thêm sách</strong>
+	  </h5>
+
+	  <!--Card content-->
+	  <div class="card-body px-lg-5 pt-0">
+
+	    <!-- Form -->
+	    <form class="text-center " style="color: #757575;" action="#!">
+
+	      <!-- Tên sách -->
+	      <div class="md-form">
+	        <input type="text" id="materialLoginFormBookName" class="form-control">
+	        <label for="materialLoginFormEmail">Tên sách</label>
+	      </div>
+
+	      <!-- Tác giả  -->
+	      <div class="md-form">
+	        <input type="text" id="materialLoginFormAuthor" class="form-control">
+	        <label for="materialLoginFormPassword">Tác giả</label>
+	      </div>
+
+	      <!-- Thể loại  -->
+	      <div class="md-form d-flex">
+	        <div class="sel sel--black-panther m-0" >
+			    <select name="select-profession" id="select-profession "  >
+			        <option value="" selected>Chọn thể loại</option>
+					    <option value="kinhte">Kinh tế</option>
+					    <option value="sachgiaokhoa">Giáo khoa</option>
+					    <option value="sachngoaingu">Ngoại ngữ</option>
+					    <option value="kynangsong">Kỹ năng sống</option>
+					    <option value="nuoidaycon">Nuôi dạy con</option>
+					    <option value="thieunhi">Thiếu nhi</option>
+					    <option value="vanhoctrongnuoc">Văn học trong nước</option>
+					    <option value="vanhocnuocngoai">Văn học nước ngoài</option>
+			    </select>
+			</div>
+	      </div>
+
+	      <!-- Giá bán  -->
+	      <div class="md-form">
+	        <input type="text" id="materialLoginFormPrice" class="form-control">
+	        <label for="materialLoginFormPassword">Giá bán</label>
+	      </div>
+
+	      <!-- Mô tả  -->
+	      <div class="md-form">
+	        <input type="text" id="materialLoginFormDescribe" class="form-control">
+	        <label for="materialLoginFormPassword">Mô tả</label>
+	      </div>
+
+	      <!-- Tồn kho  -->
+	      <div class="md-form">
+	        <input type="text" id="materialLoginFormStocks" class="form-control">
+	        <label for="materialLoginFormPassword">Số lượng tồn kho</label>
+	      </div>
+
+	      <!-- đã bán  -->
+	      <div class="md-form">
+	        <input type="text" id="materialLoginFormSold" class="form-control">
+	        <label for="materialLoginFormPassword">Đã bán</label>
+	      </div>
+
+	   
+	      <!-- ảnh  -->
+	      
+	       	<div class="input-group">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="inputGroupFileAddon01">Chọn ảnh</span>
+			  </div>
+			  <div class="custom-file">
+			    <input type="file" class="custom-file-input" id="inputGroupFile01"
+			      aria-describedby="inputGroupFileAddon01">
+			    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+			  </div>
+			</div>
+	      
+	     
+
+	      <!-- Sign in button -->
+	      <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Nhập</button>
+
+	    </form>
+	    <!-- Form -->
+
+	  </div>
+
+	</div>
+	<!-- Material form login -->
+
+	
+
+
+
+
+
+
+
+  
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript" src="js/select.js"></script>
+  <script type="text/javascript" src="js/uploadFile.js"></script>
+
+
+
+</body>
+</html>

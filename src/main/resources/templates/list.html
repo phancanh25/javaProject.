@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+	<title></title>
+</head>
+<body>
+	<nav th:replace="layout :: header"></nav>
+	<th:block th:if="${#lists.isEmpty(books)}">
+		<h5>No books</h5>
+	</th:block>
+	
+	<div class="container" id="main-content">
+	
+		<div class="row mt-4">
+		    <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+		        <span th:text="${successMessage}"></span>
+		        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		            <span aria-hidden="true">&times;</span>
+		        </button>
+		    </div>
+		</div>
+		
+		<div class="row mt-5">
+			<div class="col-6 no-padding">
+				<form class="form-inline" action="#" th:action="@{/book/search}" method="get">
+				    <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search by name ..." />
+				    <button class="btn btn-primary" type="submit">
+				        <i class="fa fa-search"></i> Search
+				    </button>
+				</form>
+			</div>
+			
+			<div class="col-6 no-padding">
+                <a href="#" th:href="@{/book/add}" class="btn btn-success float-right">
+                    <i class="fa fa-plus-square"></i> New contact
+                </a>
+            </div>
+		</div>
+	</div>
+		<div th:if="${errorMessage!=null}" style = "color:red; font-style:italic;" th:utext="${errorMessage}">..</div>
+
+	<th:block th:unless="${#lists.isEmpty(books)}">
+		<div class="table-reponsive">
+			<h5>List of books</h5>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Author</th>
+						<th>Category</th>
+						<th>Prices</th>
+						<th>Describe</th>
+						<th>Image</th>
+						<th>Inventory</th>
+						<th>Quantity sold</th>
+						<th>Publish</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="book, iterStat : ${books}">
+						<td th:text="${iterStat.count}"></td>
+						<td th:text="${book.tensach}"></td>
+						<td th:text="${book.tacgia}"></td>
+						<td th:text="${book.theloai}"></td>
+						<td th:text="${book.giaca}"></td>
+						<td th:text="${book.mota}"></td>
+						<td><img alt="" th:src="@{/image/{image}(image=${book.hinhanh})}"></td>
+						<td th:text="${book.tonkho}"></td>
+						<td th:text="${book.soluongdaban}"></td>
+						<td th:text="${book.ngayxuatban}"></td>
+						<td>
+							<a href="#" th:href="@{/book/{masach}/edit(masach=${book.masach})}" class="text-primary mr-sm-2"> <!-- (masach=${book.masach}) truyền giá trị cho {id} -->
+								<i class="fas fa-pencil-alt"></i>
+							</a>
+
+							<a href="#" th:href="@{/book/{masach}/{theloai}/delete(masach=${book.masach}, theloai=${book.theloai})}" class="text-danger">
+								<i class="fas fa-trash"></i>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</th:block>
+	
+	
+	
+	<footer th:replace="layout :: footer"></footer>
+	
+</body>
+</html>

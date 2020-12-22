@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layoutMDB :: head">
+</head>
+	<title>Đăng kí</title>
+</head>
+<body class="p-0">
+	<div th:replace="layoutMDB ::header"></div>
+	<div class="container">
+		<!-- Default form register -->
+		  <form class="text-center border border-light p-5" style="background-color:#ffffff" action="#!" th:action="@{/user/save}" th:object="${user}" method="POST">
+		
+		    <p class="h4 mb-4">Đăng kí</p>
+		
+		    <div class="form-row mb-4">
+		        <div class="col">
+		            <!-- First name -->
+		            <input th:field="*{name}" th:errorclass="field-error" type="text" id="defaultRegisterFormFirstName" class="form-control mb-4" placeholder="Tên">
+		            <!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('name')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{name}" class="toast-body">
+					     </div>
+					 </div>
+		        </div>
+		        <div class="col">
+		            <!-- Last name -->
+		            <input th:field="*{ho}" th:errorclass="field-error" type="text" id="defaultRegisterFormLastName" class="form-control mb-4" placeholder="Họ">
+		            <!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('ho')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{ho}" class="toast-body">
+					     </div>
+					 </div>
+		        </div>
+		    </div>
+		
+		    <!-- E-mail -->
+		    <input th:field="*{email}" th:errorclass="field-error" type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+				<!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('email')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{email}" class="toast-body">
+					     </div>
+					 </div>
+					 
+					 <div th:if="${emailMessage}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:text="${emailMessage}" class="toast-body">
+					     </div>
+					 </div>
+		    <!-- Password -->
+		    <input th:field="*{matkhau}" th:errorclass="field-error" type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Mật khẩu" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+		    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+		        Ít nhất 8 kí tự và 1 chữ số
+		    </small>
+		    <!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('matkhau')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{matkhau}" class="toast-body">
+					     </div>
+					 </div>
+		
+		    <!-- Phone number -->
+		    <input th:field="*{sdt}" th:errorclass="field-error" type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Số điện thoại" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+		    <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+		        Nhập số điện thoại
+		    </small>
+		    <!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('sdt')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{sdt}" class="toast-body">
+					     </div>
+					 </div>
+		
+		
+		    <!-- Sign up button -->
+		    <button class="btn btn-info my-4 btn-block" type="submit">Đăng kí</button>
+		
+		    <!-- Social register -->
+		   
+		
+		    <hr>
+		
+		    <!-- Terms of service -->
+		    <p>Bằng cách click
+		        <em>đăng kí</em> bạn đã đồng ý với 
+		        <a href="" target="_blank">điều khoản của chúng tôi</a>
+		
+		  </form>
+<!-- Default form register -->  
+	</div>
+	<script type="text/javascript">
+		$('.toast').toast('show');
+  	</script>
+</body>
+</html>

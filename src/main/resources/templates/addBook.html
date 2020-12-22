@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layoutMDB :: head">
+</head>
+<body class="p-0">
+	<div th:replace="layoutMDB :: header"></div>
+	
+	<div class="container">
+	
+			
+			<!-- Material form login -->
+			<div class="card mt-2">
+
+			  <h4 class="card-header info-color white-text text-start py-4">
+			    <b>Nhập sách cần thêm</b>
+			  </h4>
+
+			  <!--Card content-->
+			  <div class="card-body px-lg-5 pt-0">
+
+			    <!-- Form -->
+			    <form class="text-center " style="color: #757575;" action="#" th:action="@{/book/save}" th:object="${book}" enctype="multipart/form-data" method="POST">
+					<input type="hidden" th:field="*{masach}" />	
+			      <!-- Tên sách -->
+			      <div class="md-form">
+			        <input type="text" id="materialLoginFormBookName" class="form-control" th:field="*{tensach}" th:errorclass="field-error" >
+			        <label for="materialLoginFormEmail">Tên sách</label>
+					<!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('tensach')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{tensach}" class="toast-body">
+					     </div>
+					 </div>
+			      </div>
+			      
+
+			      <!-- Tác giả  -->
+			      <div class="md-form">
+			        <input type="text" id="materialLoginFormAuthor" class="form-control" th:field="*{tacgia}" th:errorclass="field-error">
+			        <label for="materialLoginFormPassword">Tác giả</label>
+			        <!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('tacgia')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{tacgia}" class="toast-body">
+					     </div>
+					 </div>
+			      </div>
+
+			      <!-- Thể loại  -->
+			      <div class="md-form ">
+			        <div class="sel sel--black-panther m-0" >
+					    <select name="select-profession" id="theloai " th:field="*{theloai}" th:errorclass="field-error" >
+					        <option value="" selected>Chọn thể loại</option>
+							    <option value="kinhte">Kinh tế</option>
+							    <option value="sachgiaokhoa">Giáo khoa</option>
+							    <option value="sachngoaingu">Ngoại ngữ</option>
+							    <option value="kynangsong">Kỹ năng sống</option>
+							    <option value="nuoidaycon">Nuôi dạy con</option>
+							    <option value="thieunhi">Thiếu nhi</option>
+							    <option value="vanhoctrongnuoc">Văn học trong nước</option>
+							    <option value="vanhocnuocngoai">Văn học nước ngoài</option>
+					    </select>
+					</div>
+					<!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('theloai')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast mt-2" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{theloai}" class="toast-body">
+					     </div>
+					 </div>
+			      </div>
+
+			      <!-- Giá bán  -->
+			      <div class="md-form">
+			        <input type="text" id="materialLoginFormPrice" class="form-control" th:field="*{giaca}" th:errorclass="field-error" >
+			        <label for="materialLoginFormPassword">Giá bán</label>
+			        <!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('giaca')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{giaca}" class="toast-body">
+					         
+					     </div>
+					 </div>
+			      </div>
+
+
+			      <!-- Tồn kho  -->
+			      <div class="md-form">
+			        <input type="text" id="materialLoginFormStocks" class="form-control" th:field="*{tonkho}" th:errorclass="field-error" >
+			        <label for="materialLoginFormPassword">Số lượng tồn kho</label>
+			        <!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('tonkho')}" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{tonkho}"  class="toast-body">
+					         
+					     </div>
+					 </div>
+			      </div>
+
+			      <!-- đã bán  -->
+			      <div class="md-form">
+			        <input type="text" id="materialLoginFormSold" class="form-control" th:field="*{soluongdaban}" th:errorclass="field-error" >
+			        <label for="materialLoginFormPassword">Đã bán</label>
+			        <!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('soluongdaban')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{soluongdaban}" class="toast-body">
+					     </div>
+					 </div>
+			      </div>
+			      
+			      <!-- Mô tả  -->
+			      <div class="md-form">
+					<textarea th:field="*{mota}" th:errorclass="field-error" id="materialLoginFormDescribe" class="md-textarea form-control" rows="3"></textarea>
+					<label for="materialLoginFormPassword">Mô tả</label>
+					
+					<!-- thongbao -->
+			         <div th:if="${#fields.hasErrors('mota')}"  role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:errors="*{mota}" class="toast-body">
+					         
+					     </div>
+					 </div>
+			      </div>
+
+			   
+			      <!-- ảnh  -->
+			      
+			       	<div class="input-group d-flex flex-column">
+			       		<div class="d-flex">
+				       		<div class="input-group-prepend">
+							    <span class="input-group-text" id="inputGroupFileAddon01">Chọn ảnh</span>
+							  </div>
+							  <div class="custom-file">
+							    <input type="file" class="custom-file-input" id="inputGroupFile01"
+							      aria-describedby="inputGroupFileAddon01" name="file">
+							    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+							</div>
+			       		</div>
+					    
+					  <!-- thongbao -->
+			         <div th:if="${fileError ne null}" role="alert" aria-live="assertive" aria-atomic="true" class="toast mt-2" data-autohide="false">
+					     <div class="toast-header warning-color">
+					         <i class="fas fa-exclamation-triangle pr-2"></i>
+					         <strong class="mr-auto">Thông báo</strong>
+					         <small>1 giây trước</small>
+					         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					             <span aria-hidden="true">&times;</span>
+					         </button>
+					     </div>
+					     <div th:text="${fileError}" class="toast-body">
+					     </div>
+					 </div>
+					</div>
+			      
+			     
+
+			      <!-- add button -->
+			      <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Nhập</button>
+
+			    </form>
+			    <!-- Form -->
+
+			  </div>
+
+			</div>
+	</div>
+	
+
+
+
+
+
+
+
+  
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript" src="/MDB-free/js/select.js"></script>
+  <script type="text/javascript" src="/MDB-free/js/uploadFile.js"></script>
+  <script type="text/javascript">
+		$('.toast').toast('show');
+  </script>
+
+
+</body>
+</html>

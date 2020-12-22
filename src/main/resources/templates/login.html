@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layoutMDB :: head">
+</head>
+	<title>Đăng nhập</title>
+</head>
+<body class="p-0">
+	<div th:replace="layoutMDB ::header"></div>
+	<div class="container">
+		<form class="text-center border border-light p-5" style="background-color:#ffffff" action="#!" name='f' th:action="@{/j_spring_security_check}" method='POST' >
+
+		    <p class="h4 mb-4">Đăng nhập</p>
+		    <div th:if="${#request.getParameter('error') == 'true'}"
+		            style="color:red;margin:10px 0px;">
+		         Login Failed!!!<br />
+		         Reason :
+		         <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+		            th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+		                Static summary
+		         </span>        
+		    </div>
+	
+		    <!-- Email -->
+		    <input name='username' value='' type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Nhập tài khoản">
+			
+		    <!-- Password -->
+		    <input type='password' name='password' id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Nhập password">
+		     
+		     <span>remember: </span><input type="checkbox" name="remember-me" />
+		    <!-- Sign in button -->
+		    <button class="btn btn-info btn-block my-4" type="submit">Đăng nhập</button>
+	
+		    <!-- Register -->
+		    <!-- <p>Chưa có tài khoản ?
+		        <a href="/book/register">Đăng kí ở đây</a>
+		    </p> -->
+			</form>
+	</div>
+	
+</body>
+</html>

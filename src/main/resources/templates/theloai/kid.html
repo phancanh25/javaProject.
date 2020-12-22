@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layoutMDB :: head">
+</head>
+	<title>Đăng nhập</title>
+</head>
+<body class="p-0">
+	<div th:replace="layoutMDB ::header"></div>
+	<div class="container">
+		
+		<div th:replace="layoutMDB ::menu"></div>
+		
+		
+		 <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+		        <span th:text="${successMessage}"></span>
+		        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		            <span aria-hidden="true">&times;</span>
+		        </button>
+		  </div>
+		
+		<div class="new-books mw-100 d-flex flex-column pt-4 pl-2" style="background-color: #ffffff">
+			<div  th:if="${!kids.isEmpty()}">
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc; text-align: start">
+					<b>Sách trong nước</b>
+					<i class="fab fa-hotjar"></i>
+				</h2>
+			</div>
+
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${kids}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class=" card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>							
+					</div>
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+
+		</div>
+		
+
+	</div>
+</body>
+</html>

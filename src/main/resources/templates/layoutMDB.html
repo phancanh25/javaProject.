@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+	<title>BookShop</title>
+	<!-- MDB icon -->
+	<link rel="icon" href="/MDB-free/img/mdb-favicon.ico" type="image/x-icon">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<!-- Google Fonts Roboto -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="/MDB-free/css/bootstrap.min.css">
+	<!-- Material Design Bootstrap -->
+	<link rel="stylesheet" href="/MDB-free/css/mdb.min.css">
+	<!-- Your custom styles (optional) -->
+	<link rel="stylesheet" href="/MDB-free/css/style.css">
+	<link rel="stylesheet" href="/MDB-free/css/select.css">
+	<link rel="stylesheet" href="/MDB-free/css/uploadFile.css">
+	<link rel="stylesheet" href="/MDB-free/css/amountBtn.css">
+	
+	
+	
+	<!-- jQuery -->
+	<script type="text/javascript" src="/MDB-free/js/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="/MDB-free/js/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="/MDB-free/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="/MDB-free/js/mdb.min.js"></script>
+	<link rel="stylesheet" href="minfile/quantumalert.css" />
+	
+</head>
+<body th:fragment="body" class="p-0">
+	<!-- Header -->
+	<div th:fragment="header" class="header d-flex container-fluid justify-content-around align-items-center special-color p-0" style="height: 50px;">
+		<div class="logo" ><a href="/book"><img style="height: 50px; width: auto" src="/MDB-free/img/bookshop.png"></a></div>
+		<div class="search">
+			<!-- <form action="#" th:action="@{/book/search}" method="get" class="form-inline md-form mr-auto mt-0 mb-0 p-0">
+		        <div class="d-flex align-items-center">
+		          <input name="name" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+		          <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+		          
+		        </div>
+		     </form> -->
+		     
+		   	  <form action="#" th:action="@{/book/search}" method="get" class="form-inline my-2 my-lg-0 ml-auto">
+			    <input name="name" class="form-control" type="search" placeholder="Search" aria-label="Search">
+			    <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+			  </form>
+		</div>
+		<div class="d-flex">
+			<div class="add" style="">
+				<button onclick="window.location.href='/book/add'" type="button" class="btn btn-info p-2 pr-4 pl-4" style="font-size: 10px">Thêm sách</button>
+			</div>
+		
+			 <div class="login" style="">
+				<button onclick="window.location.href='/book/login'" type="button" class="btn btn-info p-2 pr-4 pl-4" style="font-size: 10px">Đăng nhập</button>
+			</div>
+			
+			<div class="logout" style="">
+				<button th:if="${#request.userPrincipal != null}" onclick="window.location.href='/logout'" type="button" class="btn btn-info p-2 pr-4 pl-4" style="font-size: 10px">Đăng xuất</button>
+			</div>
+		</div>
+	</div>
+	
+	<div th:fragment="menu" class="menu d-flex justify-content-around" style="background-color: #ffffff">
+		
+				<button type="button" onclick="window.location.href='/book'" class="btn btn-light">
+				  	<i class="fas fa-home"></i>
+			  	</button>
+		
+			  	<button type="button" onclick="window.location.href='/book/foreignLanguage'" class="btn btn-light">Sách ngoại ngữ</button>
+		
+			  	<button type="button" onclick="window.location.href='/book/domestic'" class="btn btn-light">Văn học trong nước</button>
+		
+			  	<button type="button" onclick="window.location.href='/book/foreign'" class="btn btn-light">Văn học nước ngoài</button>
+		
+			  	<button type="button" onclick="window.location.href='/book/kid'" class="btn btn-light">Thiếu nhi</button>
+		
+			  	<button type="button" onclick="window.location.href='/book/lifeSkill'" class="btn btn-light">Kỹ năng sống</button>
+		
+			  	<button type="button" onclick="window.location.href='/book/rear'" class="btn btn-light">Nuôi dạy con</button>
+		
+			  	<button type="button"onclick="window.location.href='/book/economic'" class="btn btn-light">Kinh tế</button>	</div>
+	
+</body>
+</html>

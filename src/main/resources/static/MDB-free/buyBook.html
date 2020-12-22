@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Buy Book</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/amountBtn.css">
+
+   <script type="text/javascript" src="js/amountBtn.js"></script>
+</head>
+<body>
+	<!-- Header -->
+	<div class="header d-flex container-fluid justify-content-around align-items-center special-color" style="height: 50px;">
+		<div class="logo" ><a href="#"><img style="width: 150px; height: auto;" src="./img/bookshop.png"></a></div>
+		<div class="search">
+			<form class="form-inline md-form mr-auto mt-0 mb-0 p-0">
+		        <div class="d-flex align-items-center">
+		          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+		          <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+		          
+		        </div>
+		     </form>
+		</div>
+		<div class="login" style="">
+			<button type="button" class="btn btn-info p-2 pr-4 pl-4" style="font-size: 10px">Đăng nhập</button>
+
+		</div>
+	</div>
+
+	<form class="text-center " style="color: #757575;" action="#!">
+
+	      <!-- Tên người mua -->
+	      <div class="md-form">
+	        <input type="text" id="materialLoginFormName" class="form-control">
+	        <label for="materialLoginFormName">Họ và tên người nhận</label>
+	      </div>
+	      <!-- Email -->
+	      <div class="md-form">
+	        <input type="email" id="materialLoginFormEmail" class="form-control">
+	        <label for="materialLoginFormEmail">E-mail</label>
+	      </div>
+	      <!-- SDT -->
+	       <div class="md-form">
+	        <input type="number" id="materialLoginFormNumber" class="form-control">
+	        <label for="materialLoginFormNumber">Nhập số điện thoại</label>
+	      </div>
+	      <!-- địa chỉ giao hàng -->
+	      <div class="md-form">
+	        <input type="text" id="materialLoginFormAddress" class="form-control">
+	        <label for="materialLoginFormAddress">Nhập địa chỉ giao hàng</label>
+	      </div>
+<!-- book info -->
+	        <label for="materialLoginForminfo">Thông tin sản phẩm</label>
+	      <div class="card m-2 book-info d-flex flex-row" style="height: auto">
+
+			  <!-- Card image -->
+			  <img class="card-img-top" style="max-width: 30%;" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+
+			  <!-- Card content -->
+			  <div class="card-body d-flex flex-column">
+
+			    <!-- Text -->
+			    <p class="card-text " style="text-align: start">Some quick example text to build on the card title and make up the bulk of the card's
+			      content.</p>
+
+			     <!-- amount -->
+			    <div class="amount d-flex flex-row align-items-center">
+	              <table>
+
+	              	<tbody>
+	              		<tr>
+	              			<th>Số lượng:</th>
+
+	              			<td>
+	              				<div class="m-0 ml-5 p-0 d-flex">
+									<div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+									<input type="number" id="number" value="0" />
+									<div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+								</div>
+	              			</td>
+	              		</tr>
+
+
+	              		<tr>
+	              			<th style="text-align: start">Giá: </th>
+
+	              			<td>
+	              				<h3 class="text-warning ml-5" style="font-weight: 600" >65000 đ</h3>
+	              			</td>
+	              		</tr>
+	              	</tbody>
+
+	              </table>
+	            </div> 
+
+			  </div>
+
+			</div>
+	      <!-- Sign in button -->
+	      <button class="btn btn-danger btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Xác nhận thanh toán</button>
+
+	    </form>
+</body>
+</html>

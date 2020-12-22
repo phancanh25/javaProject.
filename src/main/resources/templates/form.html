@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+
+<body>
+    <nav th:replace="layout :: header"></nav>
+
+    <div class="container" id="main-content">
+        <div class="row d-flex justify-content-center">
+            <form style="min-width: 300px;" action="#" th:action="@{/book/save}" th:object="${book}" method="post" novalidate="novalidate" enctype="multipart/form-data">
+			    <h5 class="text-center">book form</h5>
+			
+			    <input type="hidden" th:field="*{masach}" />  <!-- những field trong này phải giống với file entities -->
+			
+			    <div class="form-group">
+			        <input class="form-control" type="text" placeholder="Book name"
+			               th:field="*{tensach}" th:errorclass="field-error" />
+			        <em th:if="${#fields.hasErrors('tensach')}" th:errors="*{tensach}"></em>   <!-- Check lỗi -->
+			    </div>
+			
+			    <div class="form-group">
+			        <input class="form-control" type="text" placeholder="Author"
+			               th:field="*{tacgia}" th:errorclass="field-error" />
+			        <em th:if="${#fields.hasErrors('tacgia')}" th:errors="*{tacgia}"></em>
+			    </div>
+			
+			    <div class="form-group">
+			        <select class="custom-select" id="theloai" th:field="*{theloai}" th:errorclass="field-error">
+					    <option value="" selected>Choose...</option>
+					    <option value="kinhte">Kinh tế</option>
+					    <option value="sachgiaokhoa">Giáo khoa</option>
+					    <option value="sachngoaingu">Ngoại ngữ</option>
+					    <option value="kynangsong">Kỹ năng sống</option>
+					    <option value="nuoidaycon">Nuôi dạy con</option>
+					    <option value="thieunhi">Thiếu nhi</option>
+					    <option value="vanhoctrongnuoc">Văn học trong nước</option>
+					    <option value="vanhocnuocngoai">Văn học nước ngoài</option>
+					    
+					     
+					</select>
+			        <em th:if="${#fields.hasErrors('theloai')}" th:errors="*{theloai}"></em>
+			    </div>
+			    
+			    <div class="form-group">
+			        <input class="form-control" type="text" placeholder="prices"
+			               th:field="*{giaca}" th:errorclass="field-error" />
+			        <em th:if="${#fields.hasErrors('giaca')}" th:errors="*{giaca}"></em>
+			    </div>
+			    
+			    <div class="form-group">
+			        <input class="form-control" type="text" placeholder="describe"
+			               th:field="*{mota}" th:errorclass="field-error" />
+			        <em th:if="${#fields.hasErrors('mota')}" th:errors="*{mota}"></em>
+			    </div>
+			    
+			    <div class="form-group">
+			        <input class="form-control" type="file" name="file" placeholder="image"/>
+			        <p th:text="${fileError}" th:if="${fileError ne null}" class="alert alert-primary"></p>
+			        
+			       <!--  <em th:if="${#fields.hasErrors('hinhanh')}" th:errors="*{hinhanh}"></em> -->
+			    </div>
+			    
+			    <div class="form-group">
+			        <input class="form-control" type="text" placeholder="inventory"
+			               th:field="*{tonkho}" th:errorclass="field-error" />
+			        <em th:if="${#fields.hasErrors('tonkho')}" th:errors="*{tonkho}"></em>
+			    </div>
+			    
+			    <div class="form-group">
+			        <input class="form-control" type="text" placeholder="Quantity sold	"
+			               th:field="*{soluongdaban}" th:errorclass="field-error" />
+			        <em th:if="${#fields.hasErrors('soluongdaban')}" th:errors="*{soluongdaban}"></em>
+			    </div>
+			
+			    <div class="form-group">
+			        <button type="submit" class="btn btn-block btn-primary">
+			            <i class="fa fa-save"></i> Save
+			        </button>
+			    </div>
+			</form>
+        </div>
+    </div><!-- /.container -->
+
+    <footer th:replace="layout :: footer"></footer>
+</body>
+</html>

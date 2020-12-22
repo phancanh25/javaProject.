@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layoutMDB :: head">
+</head>
+<body class="p-0">
+	<div th:replace="layoutMDB :: header"></div>
+		
+	<div class="container">
+	
+			
+		<div class="card m-2 book-info d-flex flex-row" style="height: auto">
+		
+		
+		
+		
+		    <!-- Card content -->
+		    <div class="card-body d-flex flex-column">
+		
+		        <div class="p-2 d-flex align-items-center">
+		            <h2 th:text="${book.tensach}" style="font-weight: normal; text-align: start">Chi tiết đơn hàng</h2>
+		            <button style="width: 100px; height:auto" class="btn btn-danger btn-rounded btn-block my-4 waves-effect z-depth-0 p-2 ml-3" type="submit">Chỉnh sửa</button>
+		        </div>
+		        <table>
+		            <tbody>
+		                <tr>
+		                    <th>
+		                        <h6 style="text-align: start">Mã đơn hàng: </h6>
+		                    </th>
+		                    <td><Strong th:text="${bills.madonhang}"></Strong></td>
+		
+		                </tr>
+		                <tr>
+		                    <th>
+		                        <h6 style="text-align: start">ngày mua: </h6>
+		                    </th>
+		                    <td><Strong th:text="${bills.ngayxuatban}"></Strong></td>
+		                </tr>
+		                <tr>
+		                    <th>
+		                        <h6 style="text-align: start">Tổng tiền: </h6>
+		                    </th>
+		                    <td><Strong th:text="${bills.giaca}"></Strong></td>
+		                </tr>
+		                <tr></tr>
+		                <tr></tr>
+		            </tbody>
+		        </table>
+		
+		
+		        <div class="d-flex">
+		            <div class="container my-5 py-5 z-depth-1">
+		
+		
+		                <!--Section: Content-->
+		                <section class=" p-3 text-center text-lg-left dark-grey-text">
+		
+		                    <!--Grid row-->
+		                    <div class="row">
+		
+		                        <!--Grid column-->
+		                        <div class="">
+		
+		                            <h4 class="font-weight-bold">THÔNG TIN NGƯỜI NHẬN</h4>
+		                            <div th:utext="${bills.tennguoimua}" class="p-2">Long nguyen</div>
+		                            <div th:utext="${bills.diachi}" class="p-2">97 man thiện Phường Hiệp Phú, Quận 9, Hồ Chí Minh, Việt Nam</div>
+		                            <div th:utext="${bills.sodienthoainguoimua}" class="p-2">0329138040</div>
+		
+		
+		                        </div>
+		                        <!--Grid column-->
+		
+		
+		
+		                    </div>
+		                    <!--Grid row-->
+		
+		
+		                </section>
+		                <!--Section: Content-->
+		
+		
+		            </div>
+		
+		
+		            <div class="container my-5 py-5 z-depth-1">
+		
+		
+		                <!--Section: Content-->
+		                <section class=" p-3 text-center text-lg-left dark-grey-text">
+		
+		                    <!--Grid row-->
+		                    <div class="row">
+		
+		                        <!--Grid column-->
+		                        <div class="">
+		
+		                            <h4 class="font-weight-bold">PHƯƠNG THỨC VẬN CHUYỂN</h4>
+		                            <div class="p-2">Giao hàng tiêu chuẩn</div>
+		                            <div class="p-2">nhận hàng từ 3-5 ngày</div>
+		
+		
+		
+		                        </div>
+		                        <!--Grid column-->
+		
+		
+		
+		                    </div>
+		                    <!--Grid row-->
+		
+		
+		                </section>
+		                <!--Section: Content-->
+		
+		
+		            </div>
+		
+		
+		            <div class="container my-5 py-5 z-depth-1">
+		
+		
+		                <!--Section: Content-->
+		                <section class=" p-3 text-center text-lg-left dark-grey-text">
+		
+		                    <!--Grid row-->
+		                    <div class="row">
+		
+		                        <!--Grid column-->
+		                        <div class="">
+		
+		                            <h4 class="font-weight-bold">PHƯƠNG THỨC THANH TOÁN</h4>
+		                            <div class="p-2">Thanh toán bằng tiền mặt khi nhận hàng</div>
+		
+		                        </div>
+		                        <!--Grid column-->
+		
+		
+		
+		                    </div>
+		                    <!--Grid row-->
+		
+		
+		                </section>
+		                <!--Section: Content-->
+		
+		
+		            </div>
+		        </div>
+		
+		
+		    </div>
+		
+		</div>
+		
+		
+		<table class="table table-hover m-2">
+		    <thead class="black white-text">
+		        <tr>
+		            <th scope="col">#</th>
+		            <th style="width: 60%" scope="col">
+		                <h4>Sản phẩm</h4>
+		            </th>
+		            <th scope="col">
+		                <h4>Số lượng</h4>
+		            </th>
+		            <th scope="col">
+		                <h4>Giá</h4>
+		            </th>
+		            <th scope="col">
+		                <h4>Phí vận chuyển</h4>
+		            </th>
+		            <th scope="col">
+		                <h4>Tổng cộng</h4>
+		            </th>
+		            <th></th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		            <th scope="row">1</th>
+		            <td class="d-flex" scope="row">
+		                <div class="mr-4">
+		                    <img style="width: 200px; height: auto" th:src="@{/image/{image}(image=${book.hinhanh})}">
+		                </div>
+		
+		                <div>
+		                    <h4><b th:text="${book.tensach}"></b></h4>
+		                    <label>Status:</label>
+		                    <span>còn hàng</span>
+		                </div>
+		            </td>
+		
+		            <td th:text="${bills.soluong}"></td>
+		
+		            <td th:text="${bills.giaca}"></td>
+		            <td>15000</td>
+		            <td th:text="${tongcong}"></td>
+		        </tr>
+		
+		    </tbody>
+		</table>
+
+
+</div>
+
+
+  
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript" src="/MDB-free/js/select.js"></script>
+  <script type="text/javascript" src="/MDB-free/js/uploadFile.js"></script>
+  <script type="text/javascript">
+		$('.toast').toast('show');
+  </script>
+
+
+</body>
+</html>

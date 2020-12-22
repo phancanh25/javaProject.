@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layoutMDB :: head">
+</head>
+<title>Đăng nhập</title>
+</head>
+
+<body class="p-0">
+    <div th:replace="layoutMDB ::header"></div>
+    <div class="container">
+
+        <div th:replace="layoutMDB ::menu"></div>
+
+        <!-- mua sach -->
+        <div th:object="${book}"  class="buy d-flex flex-row pt-4 pl-2 m-0" style="margin: 6px; background-color: #ffffff">
+            <div class="buy-element1 pr-3" style="width: 40%">
+                <div class="book-image d-flex justify-content-center">
+                    <img th:src="@{/image/{image}(image=${book.hinhanh})}" class="img-fluid mw-100" alt="Responsive image">
+
+                </div>
+                <div class="d-flex justify-content-center">
+                	<form th:object="${carts}" id="buyNowForm" action="#" th:action="@{/book/{masach}/buyNow(masach=${book.masach})}" method="get">
+		                <div class="buyBtn mw-100 d-flex justify-content-center">
+		                    <button onclick="getAmount()" type="button" class="btn btn-danger">Mua ngay</button>
+		                    <input id="soluong" type="hidden" th:field="*{soluong}" /> 
+		                </div>
+	                </form>
+	                <!-- <form action="#" th:action="@{/book/{masach}/cart(masach=${book.masach})}" method="get">
+		                <div class="buyBtn mw-100 d-flex justify-content-center">
+		                    <button type="submit" class="btn btn-danger">thêm vào giỏ</button>
+		                </div>
+	                </form> -->
+                </div>
+                
+            </div>
+
+            <div class="buy-element2">
+                <div class="name d-flex align-items-center">
+                	<div class="pr-3">
+                		<h2 th:text="${book.tensach}" style="font-weight: normal;"></h2>
+                	</div>
+                    
+                   	<div class=" align-items-center">
+                  		<a th:if="${#request.userPrincipal != null}" href="#" th:href="@{/book/{masach}/edit(masach=${book.masach})}" class="text-primary mr-sm-2"> <!-- (masach=${book.masach}) truyền giá trị cho {id} -->
+							<i class="fas fa-pencil-alt"></i>
+						</a>
+
+						<a th:if="${#request.userPrincipal != null}" href="#" th:href="@{/book/{masach}/{theloai}/delete(masach=${book.masach}, theloai=${book.theloai})}" class="text-danger">
+							<i class="fas fa-trash"></i>
+						</a>
+					</div>
+                </div>
+                <div class="author">
+                    <h6>Tác giả: <b th:text="${book.tacgia}" ></b></h6>
+                    <h6>Thể loại: <b th:text="${book.theloai}" ></b></h6>
+                </div>
+                <div class="prices">
+                    <h3 th:text="${book.giaca + 'đ'}" class="text-warning" style="font-weight: 600"></h3>
+                </div>
+                <div class="payment">
+                    <h6>Hình thức thanh toán:<b class="ml-5">Thanh toán khi nhận hàng</b></h6>
+                </div>
+                <!-- Amount -->
+                <div class="amount d-flex flex-row align-items-center">
+                    <h6 class="mr-5">Số lượng: </h6>
+                    <form  class="amount-form m-0 p-0 d-flex">
+                        <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+                        <input type="number" id="number" value="0" />
+                        <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- theloai lien quan -->
+        <div class="book-relate mt-3" style="background-color: #ffffff">
+        
+			<div class="relate mw-100" style="background-color: #ffffff">
+				<div  th:if="${!relateBooks.isEmpty()}" >
+					<h2 class="section-heading p-2"  style="border-bottom: 1px solid #e1dcdc;  text-align: start">
+						<b>Liên quan</b>
+						<i class="fas fa-book"></i>
+					</h2>
+				</div>
+				
+				<div  class="card-container d-flex justify-content-around flex-wrap">
+					<div th:each="book, iterStat : ${relateBooks}" th:unless="${iterStat.count > 10}" class="card m-2" style="width: 200px">
+						<!-- Card image -->
+						<div class="view overlay zoom">
+							<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+								<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+							</a>
+						</div>	
+						<!-- Card content -->
+						<div class="card-body">
+	
+							<!-- Text -->
+							<p th:text="${book.tensach}" class="card-text"></p>
+						  	<div>
+			                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+			                </div>
+	
+						</div>
+					</div>			
+					
+				</div>
+			</div>
+            
+        </div>
+
+        <!-- thong tin sach -->
+        <div class="book-info mt-3" style="background-color: #ffffff">
+            <div>
+                <h2 class="section-heading p-2" style="border-bottom: 1px solid #e1dcdc; color: #33b5e5">
+                    <b>Thông tin sách</b>
+                    <i class="fas fa-poll-h"></i>
+                </h2>
+            </div>
+
+            <!-- table-->
+            <div class="">
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Mã sách</th>
+                            <td th:text="${book.masach}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tên sách</th>
+                            <td th:text="${book.tensach}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">tác giả</th>
+                            <td th:text="${book.tacgia}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Thể loại</th>
+                            <td th:text="${book.theloai}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tồn kho</th>
+                            <td th:text="${book.tonkho}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Số lượng đã bán</th>
+                            <td th:text="${book.soluongdaban}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ngày xuất bản</th>
+                            <td th:text="${book.ngayxuatban}"></td>
+                        </tr> 
+                    </tbody>
+                </table>
+                
+                <div>
+                	<pre class="p-3" style="border-top: 1px solid #e1dcdc; text-align: start; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap;white-space: -o-pre-wrap; word-wrap: break-word; " th:text="${book.mota}"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- xem nhieu -->
+        <div class="views mw-100" style="background-color: #ffffff">
+			<div  th:if="${!views.isEmpty()}" >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc;  text-align: start">
+					<b>Xem nhiều</b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${views}" th:unless="${iterStat.count > 10}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>
+					</div>	
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+
+        <!-- the loai khac-->
+        <div class="another-category" style="background-color: #ffffff">
+            <div>
+                <h3><b>Nổi bật</b></h3>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script type="text/javascript" src="/MDB-free/js/amountBtn.js"></script>
+	<script type="text/javascript">
+		function getAmount() {
+			var number = document.getElementById('number').value
+			document.getElementById('soluong').value = number
+			document.getElementById('buyNowForm').submit()
+		}
+	</script>
+</body>
+
+</html>

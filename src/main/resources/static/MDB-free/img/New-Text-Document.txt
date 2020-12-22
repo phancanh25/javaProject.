@@ -1,0 +1,60 @@
+package group10.bookShop.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.springframework.format.annotation.NumberFormat;
+
+@Entity
+@Table(name="hoadon")
+
+public class User {
+
+	public User() {
+		@Id
+		@Column(name = "masach", nullable = false)  // mapping đến cột id trong table dattabase
+		private Integer masach;
+		
+		@NotEmpty   // không được bỏ trống
+		@Size(max=45)  // nhập không quá 50 kí tự
+		@Column(name = "tensach", nullable = false)
+		private String tensach;
+		
+		@NotNull   // không được bỏ trống
+		@Column(name = "soluong", nullable = false)
+		@NumberFormat
+		private int soluong;
+		
+		@NotNull
+		@Column(name = "sotien", nullable = false)
+		private Double giaca;
+		
+		@NotEmpty   // không được bỏ trống
+		@Size(max=45)  // nhập không quá 50 kí tự
+		@Column(name = "theloai", nullable = false)
+		private String theloai;
+		
+		@NotNull   // không được bỏ trống
+		@Column(name = "sdt", nullable = false)
+		@NumberFormat
+		private int sdt;
+		
+		@NotEmpty   // không được bỏ trống
+		@Size(max=45)  // nhập không quá 50 kí tự
+		@Column(name = "tennguoimua", nullable = false)
+		private String tennguoimua;
+		
+		@NotEmpty   // không được bỏ trống
+		@Size(max=45)  // nhập không quá 50 kí tự
+		@Column(name = "diachi", nullable = false)
+		private String diachi;
+		
+		
+		
+	}
+
+}

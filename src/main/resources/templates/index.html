@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layoutMDB :: head">
+</head>
+	<title>Đăng nhập</title>
+</head>
+<body class="p-0">
+	<div th:replace="layoutMDB ::header"></div>
+	<div class="container">
+		
+		<div th:replace="layoutMDB ::menu"></div>
+		
+		
+		 <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+		        <span th:text="${successMessage}"></span>
+		        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		            <span aria-hidden="true">&times;</span>
+		        </button>
+		  </div>
+		
+		<div class="new-books mw-100 d-flex flex-column pt-4 pl-2" style="background-color: #ffffff">
+			<div >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc; text-align: start">
+					<b>Sách mới</b>
+					<i class="fab fa-hotjar"></i>
+				</h2>
+			</div>
+
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${books}" th:unless="${iterStat.count > 10}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class=" card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>							
+					</div>
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+
+		<div class="views mw-100" style="background-color: #ffffff">
+			<div >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc;  text-align: start">
+					<b>Xem nhiều</b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${views}" th:unless="${iterStat.count > 10}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>
+					</div>	
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+
+		<div  class="best-seller mw-100 " style="background-color: #ffffff">
+			<div>
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc; text-align: start">
+					<b>Bán chạy</b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${bestSellers}" th:unless="${iterStat.count > 10 || book.soluongdaban <= 0}"  class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>
+					</div>	
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+
+		<div class="ngoai-ngu mw-100" style="background-color: #ffffff">
+			<div >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc; text-align: start">
+					<b>Ngoại ngữ</b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${foreignLanguages}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>
+					</div>	
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+
+		<div class="trong-nuoc mw-100" style="background-color: #ffffff">
+			<div >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc; text-align: start">
+					<b>Trong nước </b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${domestics}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>
+					</div>
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+
+		<div class="nuoc-ngoai mw-100" style="background-color: #ffffff">
+			<div >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc; text-align: start">
+					<b>Nước ngoài</b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${foreigns}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>
+					</div>	
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+
+		<div class="thieu-nhi mw-100" style="background-color: #ffffff">
+			<div >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc; text-align: start">
+					<b>Thiếu nhi</b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${kids}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>
+					</div>	
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+
+		<div class="ky-nang-song mw-100" style="background-color: #ffffff">
+			<div >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc;text-align: start">
+					<b>Kỹ năng sống</b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${lifeSkills}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>
+					</div>
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+
+		<div class="nuoi-day-con mw-100" style="background-color: #ffffff">
+			<div >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc; text-align: start">
+					<b>Nuôi dạy con</b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${cares}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>
+					</div>	
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+
+		<div class="kinh te mw-100" >
+			<div >
+				<h2 class="section-heading"  style="border-bottom: 1px solid #e1dcdc;text-align: start">
+					<b>Kinh tế</b>
+					<i class="fas fa-book"></i>
+				</h2>
+			</div>
+			
+			<div  class="card-container d-flex justify-content-around flex-wrap">
+				<div th:each="book, iterStat : ${economics}" class="card m-2" style="width: 200px">
+					<!-- Card image -->
+					<div class="view overlay zoom">
+						<a href="#" th:href="@{/book/{masach}/detail(masach=${book.masach})}" class="text-primary mr-sm-2">
+							<img class="card-img-top" style="max-width: 100%;" th:src="@{/image/{image}(image=${book.hinhanh})}" th:alt="@{{image}(image=${book.hinhanh})}">
+						</a>	
+					</div>	
+					<!-- Card content -->
+					<div class="card-body">
+
+						<!-- Text -->
+						<p th:text="${book.tensach}" class="card-text"></p>
+					  	<div>
+		                  <h6 th:text="${book.giaca}" class="text-warning" style="font-weight: 600" ></h6>
+		                </div>
+
+					</div>
+				</div>			
+				
+			</div>
+		</div>
+		
+
+	</div>
+	</div>
+</body>
+</html>
